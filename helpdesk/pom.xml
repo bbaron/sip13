@@ -5,12 +5,6 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	
-	<properties>
-		<recipe>15_01</recipe>
-		<recipe.conf.dir>${sip.conf.dir}/sip-${recipe}</recipe.conf.dir>
-		<module.conf.dir>${recipe.conf.dir}/helpdesk</module.conf.dir>
-	</properties>
-	
 	<parent>
 		<groupId>com.springinpractice</groupId>
 		<artifactId>com.springinpractice.15_01</artifactId>
@@ -18,7 +12,7 @@
 	</parent>
 	
 	<groupId>com.springinpractice</groupId>
-	<artifactId>com.springinpractice.${recipe}.helpdesk</artifactId>
+	<artifactId>com.springinpractice.15_01.helpdesk</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	<name>Help Desk</name>
@@ -57,7 +51,7 @@
 					<!-- See http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin -->
 					<webAppConfig>
 						<contextPath>/helpdesk</contextPath>
-						<extraClasspath>${module.conf.dir}/classes</extraClasspath>
+						<extraClasspath>${sip.conf.dir}/sip-15_01/classes</extraClasspath>
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
