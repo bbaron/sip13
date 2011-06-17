@@ -1,14 +1,13 @@
-================================================================================
+========================================================================================================================
 Spring in Practice, Chapter 15
 
 Copyright (c) 2008-2011 Manning Publications Co.
 
 Willie Wheeler (willie.wheeler@gmail.com)
-==============================================================================
+========================================================================================================================
 
-This chapter shows how to use Spring Integration 2.0 to accomplish enterprise
-integration tasks. We develop a basic help desk system with the following
-integrations:
+This chapter shows how to use Spring Integration 2.0 to accomplish enterprise integration tasks. We develop a basic help
+desk system with the following integrations:
 
 Inbound:
 * Java API
