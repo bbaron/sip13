@@ -28,7 +28,8 @@ public class TicketServiceImpl implements TicketService {
 	private static final Logger LOG = LoggerFactory.getLogger(TicketServiceImpl.class);
 	
 	/* (non-Javadoc)
-	 * @see com.springinpractice.ch15.helpdesk.service.TicketService#createTicket(com.springinpractice.ch15.helpdesk.model.Ticket)
+	 * @see com.springinpractice.ch15.helpdesk.service.TicketService#createTicket(
+	 * com.springinpractice.ch15.helpdesk.model.Ticket)
 	 */
 	@Override
 	public void createTicket(Ticket ticket) {
