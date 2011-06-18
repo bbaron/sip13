@@ -19,6 +19,5 @@
 	
 	<modules>
 		<module>helpdesk</module>
-		<module>portal</module>
 	</modules>
 </project>

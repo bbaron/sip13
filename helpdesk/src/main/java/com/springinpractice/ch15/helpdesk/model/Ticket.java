@@ -1,12 +1,3 @@
-/* 
- * $Id$
- * 
- * Copyright (c) 2008-2011 Manning Publications Co.
- * 
- * Book web site   - http://www.manning.com/wheeler/
- * Book blog       - http://springinpractice.com/
- * Author web site - http://wheelersoftware.com/
- */
 package com.springinpractice.ch15.helpdesk.model;
 
 import java.util.Date;
@@ -14,7 +5,6 @@ import java.util.Date;
 /**
  * Ticket domain object.
  * 
- * @version $Id$
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 public class Ticket {
