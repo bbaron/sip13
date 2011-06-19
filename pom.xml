@@ -28,6 +28,11 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<name>Spring in Practice Recipe 15.2</name>
 	<url>http://springinpractice.com/</url>
 	
+	<properties>
+		<chapter.number>15</chapter.number>
+		<chapter.conf.dir>${sip.conf.dir}/sip${chapter.number}</chapter.conf.dir>
+	</properties>
+	
 	<modules>
 		<module>helpdesk</module>
 	</modules>
