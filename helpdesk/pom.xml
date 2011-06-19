@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+========================================================================================================================
+pom.xml
+
+Copyright (c) 2008-2011 Manning Publications Co.
+
+Willie Wheeler (willie.wheeler@gmail.com)
+========================================================================================================================
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -16,6 +26,11 @@
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	<name>Help Desk</name>
+	<url>http://springinpractice.com/</url>
+	
+	<properties>
+		<chapter.number>15</chapter.number>
+	</properties>
 	
 	<dependencies>
 		<dependency>
@@ -51,7 +66,7 @@
 					<!-- See http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin -->
 					<webAppConfig>
 						<contextPath>/helpdesk</contextPath>
-						<extraClasspath>${sip.conf.dir}/sip-15_01/classes</extraClasspath>
+						<extraClasspath>${sip.conf.dir}/sip15/classes</extraClasspath>
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
