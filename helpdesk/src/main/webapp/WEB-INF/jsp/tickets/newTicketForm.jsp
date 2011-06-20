@@ -5,6 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<c:url var="createTicketUrl" value="/tickets.html" />
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Create a support ticket</title>
@@ -14,7 +16,7 @@
 		
 		<p>Please use this form to create a support ticket for the user.</p>
 		
-		<form:form modelAttribute="ticket" cssClass="main">
+		<form:form modelAttribute="ticket" action="${createTicketUrl}" cssClass="main">
 			<div class="formItem">
 				<div>User name:</div>
 				<div><form:input path="userName" cssClass="medium" /></div>
