@@ -3,11 +3,17 @@ package com.springinpractice.ch15.helpdesk.web;
 import java.util.Date;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,11 +26,20 @@ import com.springinpractice.ch15.helpdesk.model.Ticket;
 @Controller
 @RequestMapping("/tickets")
 public class TicketController {
+	private static final String VN_NEW_TICKET_FORM = "tickets/newTicketForm";
+	private static final String VN_NEW_TICKET_CREATED = "redirect:/tickets/ticketcreated.html";
+	private static final String VN_NEW_TICKET_SUCCESS = "tickets/newTicketSuccess";
 	private static final Logger LOG = LoggerFactory.getLogger(TicketController.class);
 	
 	@Inject private TicketGateway ticketGateway;
 
-	// Normally we'd have an @InitBinder method and do form validation, but not for this simple example.
+	/**
+	 * @param binder binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
 	
 	/**
 	 * @param model model
@@ -33,19 +48,21 @@ public class TicketController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String getNewTicketForm(Model model) {
 		model.addAttribute(new Ticket());
-		return "tickets/newTicketForm";
+		return VN_NEW_TICKET_FORM;
 	}
 	
 	/**
 	 * @param ticket ticket
+	 * @param result result
 	 * @return logical view name
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public String createTicket(Ticket ticket) {
+	public String createTicket(@ModelAttribute @Valid Ticket ticket, BindingResult result) {
 		LOG.debug("Creating ticket: {}", ticket);
+		if (result.hasErrors()) { return VN_NEW_TICKET_FORM; }
 		ticket.setDateCreated(new Date());
 		ticketGateway.createTicket(ticket);
-		return "redirect:/tickets/ticketcreated.html";
+		return VN_NEW_TICKET_CREATED;
 	}
 	
 	/**
@@ -53,6 +70,6 @@ public class TicketController {
 	 */
 	@RequestMapping(value = "/ticketcreated", method = RequestMethod.GET)
 	public String getSuccessPage() {
-		return "tickets/newTicketSuccess";
+		return VN_NEW_TICKET_SUCCESS;
 	}
 }
