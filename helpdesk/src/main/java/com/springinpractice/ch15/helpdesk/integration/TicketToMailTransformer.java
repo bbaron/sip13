@@ -47,9 +47,9 @@ public class TicketToMailTransformer {
 	public MailMessage transform(Ticket ticket) {
 		MailMessage msg = new SimpleMailMessage();
 		
-		String custName = ticket.getCustomerName();
-		String custEmail = ticket.getCustomerEmail();
-		msg.setTo(custName + " <" + custEmail + ">");
+		String userName = ticket.getUserName();
+		String userEmail = ticket.getUserEmail();
+		msg.setTo(userName + " <" + userEmail + ">");
 		
 		msg.setFrom(confFrom);
 		msg.setSubject(confSubj);
