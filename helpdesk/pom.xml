@@ -39,11 +39,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
 		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>com.springsource.javax.mail</artifactId>
-			<scope>provided</scope>
-		</dependency>
 		
 		<!-- Use these since Spring Integration 2.0 isn't in the EBR at the time of this writing. -->
 		<dependency>
@@ -57,16 +52,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 				<exclusion>
 					<groupId>org.springframework</groupId>
 					<artifactId>spring-context</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.integration</groupId>
-			<artifactId>spring-integration-mail</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-context-support</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -92,13 +77,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 						</connector>
 					</connectors>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>javax.mail</groupId>
-						<artifactId>com.springsource.javax.mail</artifactId>
-						<version>${javamail.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

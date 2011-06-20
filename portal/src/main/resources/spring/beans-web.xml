@@ -21,7 +21,7 @@
 	     We're not pointing directly at the tech support form processing URL. -->
 	<bean id="portalService"
 		class="com.springinpractice.ch15.portal.service.PortalTicketServiceImpl"
-		p:ticketingServiceUrl="http://localhost:8080/ticketing/tickets" />
+		p:ticketingServiceUrl="http://localhost:8080/helpdesk/tickets.html" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/"

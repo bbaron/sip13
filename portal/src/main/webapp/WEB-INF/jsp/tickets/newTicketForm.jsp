@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url var="postTicketUrl" value="/tickets" />
+<c:url var="createTicketUrl" value="/tickets.html" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -16,7 +16,7 @@
 		<p>If you are having technical difficulties and can't find the answer you need in the Knowledge Base, please
 		contact technical support using the form below. We will get back to you within one business day.</p>
 		
-		<form:form action="${postTicketUrl}" modelAttribute="ticket">
+		<form:form modelAttribute="ticket" action="${createTicketUrl}" cssClass="main">
 			<div class="formItem">
 				<div>Your name:</div>
 				<div><form:input path="name" /></div>

@@ -35,6 +35,5 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<modules>
 		<module>helpdesk</module>
-		<module>portal</module>
 	</modules>
 </project>

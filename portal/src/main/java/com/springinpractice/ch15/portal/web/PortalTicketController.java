@@ -52,8 +52,8 @@ public class PortalTicketController {
 	 * @param ticket ticket
 	 * @return logical view name
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public String postNewTicketForm(@ModelAttribute @Valid PortalTicket ticket, BindingResult result) {
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public String createTicket(@ModelAttribute("ticket") @Valid PortalTicket ticket, BindingResult result) {
 		LOG.debug("Creating ticket: {}", ticket);
 		if (result.hasErrors()) { return VN_NEW_TICKET_FORM; }
 		ticket.setDateCreated(new Date());

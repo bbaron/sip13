@@ -56,7 +56,7 @@ public class TicketController {
 	 * @param result result
 	 * @return logical view name
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String createTicket(@ModelAttribute @Valid Ticket ticket, BindingResult result) {
 		LOG.debug("Creating ticket: {}", ticket);
 		if (result.hasErrors()) { return VN_NEW_TICKET_FORM; }
