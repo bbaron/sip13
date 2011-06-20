@@ -8,7 +8,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:/spring/beans-service.xml
-			classpath:/spring/beans-integration.xml
 		</param-value>
 	</context-param>
 	<listener>
@@ -27,7 +26,10 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
+			
+			<!-- Spring Integration must go here so we can find the inbound HTTP channel adapter -->
 			<param-value>
+				classpath:/spring/beans-integration.xml
 				classpath:/spring/beans-web.xml
 			</param-value>
 		</init-param>

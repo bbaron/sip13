@@ -19,19 +19,19 @@
 		<form:form modelAttribute="ticket" action="${createTicketUrl}" cssClass="main">
 			<div class="formItem">
 				<div>Your name:</div>
-				<div><form:input path="name" /></div>
-				<form:errors path="name">
+				<div><form:input path="userName" cssClass="medium" /></div>
+				<form:errors path="userName">
 					<div class="fieldError">
-						<form:errors path="name" />
+						<form:errors path="userName" />
 					</div>
 				</form:errors>
 			</div>
 			<div class="formItem">
 				<div>Your e-mail:</div>
-				<div><form:input path="email" /></div>
-				<form:errors path="email">
+				<div><form:input path="userEmail" cssClass="medium" /></div>
+				<form:errors path="userEmail">
 					<div class="fieldError">
-						<form:errors path="email" />
+						<form:errors path="userEmail" />
 					</div>
 				</form:errors>
 			</div>

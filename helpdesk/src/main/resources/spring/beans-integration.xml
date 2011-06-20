@@ -12,6 +12,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 <beans:beans xmlns="http://www.springframework.org/schema/integration"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:http="http://www.springframework.org/schema/integration/http"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:mail="http://www.springframework.org/schema/integration/mail"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -19,20 +20,44 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+		http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http-2.0.xsd
 		http://www.springframework.org/schema/integration/mail http://www.springframework.org/schema/integration/mail/spring-integration-mail-2.0.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 	
 	
 	<context:property-placeholder location="classpath:/spring/integration.properties" />
 	
+	
 	<!-- =========================================================================================================== -->
 	<!-- Inbound                                                                                                     -->
 	<!-- =========================================================================================================== -->
 	
+	<!-- TICKET GATEWAY -->
+	
 	<!-- Supports ticketing operations (for us, just creation). We define input channels on a per-operation basis
 	     using Java 5 annotations. See TicketGateway.java. -->
 	<gateway id="ticketGateway" service-interface="com.springinpractice.ch15.helpdesk.integration.TicketGateway" />
+	
+	
+	<!-- FORM DATA -->
+	
+	<!-- For the inbound HTTP channel adapter. This is where the portal sends its tickets. -->
+	<!-- Maps within the current servlet mapping (but this can be changed with alwaysUseFullPath). -->
+	<beans:bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	
+	<http:inbound-channel-adapter name="/portaltickets" channel="newFormChannel" supported-methods="POST" />
+	
+	<channel id="newFormChannel" />
+	
+	<!-- Spring Integration 2.0 approach -->
+	<map-to-object-transformer
+		input-channel="newFormChannel"
+		output-channel="newTicketChannel"
+		type="com.springinpractice.ch15.helpdesk.model.Ticket" />
+	
 
+	<!-- NEW TICKET CHANNEL -->
+	
 	<publish-subscribe-channel id="newTicketChannel" />
 	
 	
@@ -40,7 +65,12 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<!-- Outbound                                                                                                    -->
 	<!-- =========================================================================================================== -->
 	
+	<!-- SERVICE ACTIVATOR -->
+	
 	<service-activator input-channel="newTicketChannel" ref="ticketService" method="createTicket" />
+	
+	
+	<!-- CONFIRMATION E-MAIL -->
 	
 	<transformer input-channel="newTicketChannel" output-channel="confirmationMailChannel">
 		<beans:bean id="ticketToConfirmationMailTransformer"
@@ -52,13 +82,9 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<!-- Prepare channel for sending confirmation e-mail -->
 	<channel id="confirmationMailChannel" />
 		
-	<mail:outbound-channel-adapter
-		channel="confirmationMailChannel"
-		mail-sender="mailSender" />
+	<mail:outbound-channel-adapter channel="confirmationMailChannel" mail-sender="mailSender" />
 	
-	<beans:bean id="mailSender"
-		class="org.springframework.mail.javamail.JavaMailSenderImpl"
-		p:session-ref="mailSession" />
+	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" p:session-ref="mailSession" />
 	
 	<jee:jndi-lookup id="mailSession" jndi-name="mail/Session" resource-ref="true" />
 	

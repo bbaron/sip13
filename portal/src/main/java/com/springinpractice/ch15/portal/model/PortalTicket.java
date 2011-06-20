@@ -8,22 +8,22 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 public class PortalTicket {
-	private String name;
-	private String email;
+	private String userName;
+	private String userEmail;
 	private String description;
 	private Date dateCreated;
 	
 	/**
-	 * @return name
+	 * @return userName
 	 */
 	@NotNull
 	@Size(min = 1, max = 80)
-	public String getName() { return name; }
+	public String getUserName() { return userName; }
 	
 	/**
-	 * @param name name
+	 * @param userName user name
 	 */
-	public void setName(String name) { this.name = name; }
+	public void setUserName(String name) { this.userName = name; }
 	
 	/**
 	 * @return e-mail
@@ -31,12 +31,12 @@ public class PortalTicket {
 	@NotNull
 	@Size(min = 1, max = 80)
 	@Email
-	public String getEmail() { return email; }
+	public String getUserEmail() { return userEmail; }
 	
 	/**
-	 * @param email e-mail
+	 * @param userEmail e-mail
 	 */
-	public void setEmail(String email) { this.email = email; }
+	public void setUserEmail(String email) { this.userEmail = email; }
 	
 	/**
 	 * @return description
@@ -65,8 +65,8 @@ public class PortalTicket {
 	 */
 	@Override
 	public String toString() {
-		return "[PortalTicket: name=" + name
-			+ ", email=" + email
+		return "[PortalTicket: userName=" + userName
+			+ ", userEmail=" + userEmail
 			+ ", description=" + description
 			+ ", dateCreated=" + dateCreated
 			+ "]";

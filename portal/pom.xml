@@ -39,10 +39,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
-		</dependency>
 	</dependencies>
 	
 	<build>

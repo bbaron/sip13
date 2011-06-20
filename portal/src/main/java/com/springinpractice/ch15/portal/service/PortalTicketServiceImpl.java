@@ -2,14 +2,15 @@ package com.springinpractice.ch15.portal.service;
 
 import static org.springframework.util.Assert.notNull;
 
-import java.io.IOException;
+import javax.inject.Inject;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import com.springinpractice.ch15.portal.model.PortalTicket;
 
@@ -23,7 +24,7 @@ import com.springinpractice.ch15.portal.model.PortalTicket;
 public class PortalTicketServiceImpl implements PortalTicketService {
 	private static final Logger LOG = LoggerFactory.getLogger(PortalTicketServiceImpl.class);
 	
-	private String ticketingServiceUrl;
+	@Inject private RestTemplate restTemplate;
 	
 	/**
 	 * HTTP endpoint to receive tickets created by this service in <code>application/x-www-form-urlencoded</code> format
@@ -32,7 +33,8 @@ public class PortalTicketServiceImpl implements PortalTicketService {
 	 * 
 	 * @param url URL
 	 */
-	public void setTicketingServiceUrl(String url) { this.ticketingServiceUrl = url; }
+	@Value("#{portalProps.helpDeskNewTicketUrl}")
+	private String helpDeskNewTicketUrl;
 
 	/* (non-Javadoc)
 	 * @see com.springinpractice.ch15.portal.service.PortalTicketService#createTicket(com.springinpractice.ch15.portal.model.PortalTicket)
@@ -56,26 +58,13 @@ public class PortalTicketServiceImpl implements PortalTicketService {
 	 * @param ticket ticket
 	 */
 	private void sendTicketToTicketingService(PortalTicket ticket) {
-		LOG.debug("POSTing application/x-www-form-urlencoded portal ticket data to ticketing service");
+		LOG.debug("POSTing application/x-www-form-urlencoded portal ticket {} to ticketing service at {}",
+				ticket, helpDeskNewTicketUrl);
 		
-		HttpClient client = new HttpClient();
-		PostMethod post = new PostMethod(ticketingServiceUrl);
-		post.addParameter("userName", ticket.getName());
-		post.addParameter("userEmail", ticket.getEmail());
-		post.addParameter("issueDescription", ticket.getDescription());
-		
-		try {
-			int statusCode = client.executeMethod(post);
-			if (statusCode == HttpStatus.SC_OK) {
-				LOG.debug("POST succeeded");
-			} else {
-				LOG.error("POST failed: {}", post.getStatusLine());
-			}
-		} catch (IOException e) {
-			LOG.error("IOException", e);
-			throw new RuntimeException(e);
-		} finally {
-			post.releaseConnection();
-		}
+		MultiValueMap<String, String> ticketData = new LinkedMultiValueMap<String, String>();
+		ticketData.add("userName", ticket.getUserName());
+		ticketData.add("userEmail", ticket.getUserEmail());
+		ticketData.add("description", ticket.getDescription());
+		restTemplate.postForLocation(helpDeskNewTicketUrl, ticketData);
 	}
 }
