@@ -2,6 +2,11 @@ package com.springinpractice.ch15.helpdesk.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
 /**
  * Ticket domain object.
  * 
@@ -9,8 +14,8 @@ import java.util.Date;
  */
 public class Ticket {
 	private Long id;
-	private String custName;
-	private String custEmail;
+	private String userName;
+	private String userEmail;
 	private String description;
 	private Date dateCreated;
 	
@@ -26,28 +31,35 @@ public class Ticket {
 	private void setId(Long id) { this.id = id; }
 
 	/**
-	 * @return customer name
+	 * @return user name
 	 */
-	public String getCustomerName() { return custName; }
+	@NotNull
+	@Size(min = 1, max = 80)
+	public String getUserName() { return userName; }
 	
 	/**
-	 * @param custName customer name
+	 * @param name user name
 	 */
-	public void setCustomerName(String custName) { this.custName = custName; }
+	public void setUserName(String name) { this.userName = name; }
 
 	/**
-	 * @return customer e-mail address
+	 * @return user e-mail address
 	 */
-	public String getCustomerEmail() { return custEmail; }
+	@NotNull
+	@Size(min = 1, max = 80)
+	@Email
+	public String getUserEmail() { return userEmail; }
 
 	/**
-	 * @param custEmail customer e-mail address
+	 * @param email user e-mail address
 	 */
-	public void setCustomerEmail(String custEmail) { this.custEmail = custEmail; }
+	public void setUserEmail(String email) { this.userEmail = email; }
 
 	/**
 	 * @return description
 	 */
+	@NotNull
+	@Size(min = 1, max = 4000)
 	public String getDescription() { return description; }
 
 	/**
@@ -70,8 +82,8 @@ public class Ticket {
 	 */
 	@Override
 	public String toString() {
-		return "[Ticket: customerName=" + custName
-			+ ", customerEmail=" + custEmail
+		return "[Ticket: userName=" + userName
+			+ ", userEmail=" + userEmail
 			+ ", description=" + description
 			+ ", dateCreated=" + dateCreated
 			+ "]";
