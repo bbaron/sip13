@@ -58,13 +58,16 @@ public class PortalTicketServiceImpl implements PortalTicketService {
 	 * @param ticket ticket
 	 */
 	private void sendTicketToTicketingService(PortalTicket ticket) {
-		LOG.debug("POSTing application/x-www-form-urlencoded portal ticket {} to ticketing service at {}",
-				ticket, helpDeskNewTicketUrl);
+		LOG.debug("POSTing portal ticket {} to ticketing service at {}", ticket, helpDeskNewTicketUrl);
 		
-		MultiValueMap<String, String> ticketData = new LinkedMultiValueMap<String, String>();
-		ticketData.add("userName", ticket.getUserName());
-		ticketData.add("userEmail", ticket.getUserEmail());
-		ticketData.add("description", ticket.getDescription());
-		restTemplate.postForLocation(helpDeskNewTicketUrl, ticketData);
+		// This sends the ticket as application/x-www-form-urlencoded form data.
+//		MultiValueMap<String, String> ticketData = new LinkedMultiValueMap<String, String>();
+//		ticketData.add("userName", ticket.getUserName());
+//		ticketData.add("userEmail", ticket.getUserEmail());
+//		ticketData.add("description", ticket.getDescription());
+//		restTemplate.postForLocation(helpDeskNewTicketUrl, ticketData);
+		
+		// This marshalls the ticket into XML using JAXB and puts it in the request body.
+		restTemplate.postForLocation(helpDeskNewTicketUrl, ticket);
 	}
 }

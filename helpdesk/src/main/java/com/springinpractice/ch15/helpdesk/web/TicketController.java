@@ -24,7 +24,6 @@ import com.springinpractice.ch15.helpdesk.model.Ticket;
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 @Controller
-@RequestMapping("/tickets")
 public class TicketController {
 	private static final String VN_NEW_TICKET_FORM = "tickets/newTicketForm";
 	private static final String VN_NEW_TICKET_CREATED = "redirect:/tickets/ticketcreated.html";
@@ -45,18 +44,20 @@ public class TicketController {
 	 * @param model model
 	 * @return logical view name
 	 */
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "/tickets/new", method = RequestMethod.GET)
 	public String getNewTicketForm(Model model) {
 		model.addAttribute(new Ticket());
 		return VN_NEW_TICKET_FORM;
 	}
 	
 	/**
+	 * Handler method for creating new tickets using an HTML form.
+	 * 
 	 * @param ticket ticket
 	 * @param result result
 	 * @return logical view name
 	 */
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/tickets.html", method = RequestMethod.POST)
 	public String createTicket(@ModelAttribute @Valid Ticket ticket, BindingResult result) {
 		LOG.debug("Creating ticket: {}", ticket);
 		if (result.hasErrors()) { return VN_NEW_TICKET_FORM; }
@@ -68,7 +69,7 @@ public class TicketController {
 	/**
 	 * @return logical view name
 	 */
-	@RequestMapping(value = "/ticketcreated", method = RequestMethod.GET)
+	@RequestMapping(value = "/tickets/ticketcreated", method = RequestMethod.GET)
 	public String getSuccessPage() {
 		return VN_NEW_TICKET_SUCCESS;
 	}

@@ -4,6 +4,11 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -12,6 +17,8 @@ import org.hibernate.validator.constraints.Email;
  * 
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
+@XmlRootElement
+@XmlAccessorType(value = XmlAccessType.NONE)
 public class Ticket {
 	private Long id;
 	private String userName;
@@ -22,6 +29,7 @@ public class Ticket {
 	/**
 	 * @return ID
 	 */
+	@XmlAttribute
 	public Long getId() { return id; }
 	
 	/**
@@ -33,6 +41,7 @@ public class Ticket {
 	/**
 	 * @return user name
 	 */
+	@XmlElement
 	@NotNull
 	@Size(min = 1, max = 80)
 	public String getUserName() { return userName; }
@@ -45,6 +54,7 @@ public class Ticket {
 	/**
 	 * @return user e-mail address
 	 */
+	@XmlElement
 	@NotNull
 	@Size(min = 1, max = 80)
 	@Email
@@ -58,6 +68,7 @@ public class Ticket {
 	/**
 	 * @return description
 	 */
+	@XmlElement
 	@NotNull
 	@Size(min = 1, max = 4000)
 	public String getDescription() { return description; }
@@ -70,6 +81,7 @@ public class Ticket {
 	/**
 	 * @return date created
 	 */
+	@XmlElement
 	public Date getDateCreated() { return dateCreated; }
 
 	/**
