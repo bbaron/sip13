@@ -17,20 +17,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.springinpractice.ch15.helpdesk.dao.TicketDao;
 import com.springinpractice.ch15.helpdesk.integration.TicketGateway;
 import com.springinpractice.ch15.helpdesk.model.Ticket;
 
 /**
+ * Web controller for help desk tickets.
+ * 
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
 @Controller
 @RequestMapping("/tickets")
 public class TicketController {
+	private static final String VN_TICKET_LIST = "tickets/ticketList";
 	private static final String VN_NEW_TICKET_FORM = "tickets/newTicketForm";
 	private static final String VN_NEW_TICKET_CREATED = "redirect:/tickets/ticketcreated.html";
 	private static final String VN_NEW_TICKET_SUCCESS = "tickets/newTicketSuccess";
 	private static final Logger LOG = LoggerFactory.getLogger(TicketController.class);
 	
+	@Inject private TicketDao ticketDao;
 	@Inject private TicketGateway ticketGateway;
 
 	/**
@@ -42,6 +47,20 @@ public class TicketController {
 	}
 	
 	/**
+	 * Displays the ticket list page.
+	 * 
+	 * @param model model
+	 * @return logical view name
+	 */
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String getTicketList(Model model) {
+		model.addAttribute(ticketDao.getAll());
+		return VN_TICKET_LIST;
+	}
+	
+	/**
+	 * Displays the new ticket entry form.
+	 * 
 	 * @param model model
 	 * @return logical view name
 	 */
@@ -52,6 +71,8 @@ public class TicketController {
 	}
 	
 	/**
+	 * Processes new ticket submissions.
+	 * 
 	 * @param ticket ticket
 	 * @param result result
 	 * @return logical view name
@@ -66,6 +87,8 @@ public class TicketController {
 	}
 	
 	/**
+	 * Displays a success page following the creation of a new ticket.
+	 * 
 	 * @return logical view name
 	 */
 	@RequestMapping(value = "/ticketcreated", method = RequestMethod.GET)

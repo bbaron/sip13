@@ -25,6 +25,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<artifactId>com.springinpractice.15_01</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>pom</packaging>
+	
 	<name>Spring in Practice Recipe 15.1</name>
 	<url>http://springinpractice.com/</url>
 	
