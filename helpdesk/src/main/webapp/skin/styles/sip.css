@@ -191,8 +191,16 @@ input[type="submit"] {
 	background-image: url(../images/icons/add.png);
 }
 
+.email.icon {
+	background-image: url(../images/icons/email.png);
+}
+
 .table.icon {
 	background-image: url(../images/icons/table.png);
+}
+
+.user.icon {
+	background-image: url(../images/icons/user.png);
 }
 
 
