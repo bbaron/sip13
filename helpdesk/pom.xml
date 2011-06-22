@@ -25,6 +25,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<artifactId>com.springinpractice.15_02.helpdesk</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
+	
 	<name>Help Desk</name>
 	<url>http://springinpractice.com/</url>
 	
@@ -34,7 +35,19 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<dependencies>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>com.springinpractice</groupId>
+			<artifactId>com.springinpractice.api</artifactId>
+			<version>1.0-RELEASE</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.springinpractice</groupId>
+			<artifactId>com.springinpractice.deps-hibernate</artifactId>
+			<version>1.0-RELEASE</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.springinpractice</groupId>
 			<artifactId>com.springinpractice.deps-web</artifactId>
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
