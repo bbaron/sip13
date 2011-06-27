@@ -8,8 +8,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:url var="sipCssUrl" value="/skin/sip.css" />
-<c:url var="sipJsUrl" value="/skin/sip.js" />
+<c:url var="sipCssUrl" value="/skin/styles/sip.css" />
+<c:url var="sipJsUrl" value="/skin/scripts/sip.js" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
