@@ -52,6 +52,34 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		request-payload-type="com.springinpractice.ch15.helpdesk.model.Ticket" />
 	
 	
+	<!-- INBOUND CUSTOMER-FACING SUPPORT E-MAIL ADDRESS. -->
+	<!-- WARNING: THE IMAP CONFIGURATIONS BELOW DELETES MESSAGES ON THE SERVER FOR THE CONFIGURED E-MAIL ACCOUNT!    -->
+	<!-- USE A TEST ACCOUNT IF YOU'RE TESTING THE CODE OUT. DO NOT USE YOUR PERSONAL E-MAIL ACCOUNT UNLESS YOU ARE   -->
+	<!-- OK WITH LOSING THE ENTIRE CONTENTS OF YOUR INBOX. COURTESY: SCHOOL OF HARD KNOCKS. [WLW]                    -->
+	
+	<!-- Listen for e-mail. IMAP server must support IMAP IDLE. Client requires JavaMail 1.4.1 or later. -->
+	<mail:imap-idle-channel-adapter
+		channel="newMailChannel"
+		store-uri="${email.store.uri}"
+		should-delete-messages="true" />
+	
+	<!-- Use this if your IMAP server doesn't support IMAP IDLE. -->
+	<!--
+	<mail:inbound-channel-adapter channel="newMailChannel" store-uri="${email.store.uri}">
+		<poller max-messages-per-poll="3">
+			<interval-trigger interval="30" time-unit="SECONDS" />
+		</poller>
+	</mail:inbound-channel-adapter>
+	-->
+	     
+	<channel id="newMailChannel" />
+	
+	<transformer input-channel="newMailChannel" output-channel="newTicketChannel">
+		<beans:bean id="mailToTicketTransformer"
+			class="com.springinpractice.ch15.helpdesk.integration.MailToTicketTransformer" />
+	</transformer>
+	
+	
 	<!-- NEW TICKET CHANNEL -->
 	
 	<publish-subscribe-channel id="newTicketChannel" />
