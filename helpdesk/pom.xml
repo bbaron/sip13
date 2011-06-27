@@ -17,12 +17,12 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<parent>
 		<groupId>com.springinpractice</groupId>
-		<artifactId>com.springinpractice.15_05</artifactId>
+		<artifactId>com.springinpractice.15_06</artifactId>
 		<version>1.0-RELEASE</version>
 	</parent>
 	
 	<groupId>com.springinpractice</groupId>
-	<artifactId>com.springinpractice.15_05.helpdesk</artifactId>
+	<artifactId>com.springinpractice.15_06.helpdesk</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
