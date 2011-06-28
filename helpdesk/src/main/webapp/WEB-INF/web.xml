@@ -33,6 +33,10 @@
 				classpath:/spring/beans-web.xml
 			</param-value>
 		</init-param>
+		
+		<!-- Load the servlet on startup so we can laod the integration context and fire up the IMAP IDLE listener.
+		     Otherwise we have to interact with the app to start the listener. -->
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
