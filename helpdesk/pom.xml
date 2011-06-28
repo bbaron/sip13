@@ -69,6 +69,12 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<version>1.4.0</version>
 		</dependency>
 		
+		<!-- For XMPP -->
+		<dependency>
+			<groupId>net.sourceforge.cglib</groupId>
+			<artifactId>com.springsource.net.sf.cglib</artifactId>
+		</dependency>
+		
 		<!-- Use these since Spring Integration 2.0 isn't in the EBR at the time of this writing. -->
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
@@ -97,6 +103,16 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-mail</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context-support</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-xmpp</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>

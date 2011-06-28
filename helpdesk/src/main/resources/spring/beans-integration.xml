@@ -17,12 +17,14 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:http="http://www.springframework.org/schema/integration/http"
 	xmlns:mail="http://www.springframework.org/schema/integration/mail"
+	xmlns:xmpp="http://www.springframework.org/schema/integration/xmpp"
 	xmlns:oxm="http://www.springframework.org/schema/oxm"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http-2.0.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
 		http://www.springframework.org/schema/integration/mail http://www.springframework.org/schema/integration/mail/spring-integration-mail-2.0.xsd
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+		http://www.springframework.org/schema/integration/xmpp http://www.springframework.org/schema/integration/xmpp/spring-integration-xmpp-2.0.xsd
 		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
@@ -159,5 +161,24 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<oxm:jaxb2-marshaller id="jaxb2Marshaller">
 		<oxm:class-to-be-bound name="com.springinpractice.ch15.helpdesk.model.BasecampTodoItem" />
 	</oxm:jaxb2-marshaller>
+	
+	
+	<!-- XMPP (E.G. GTALK) -->
+	
+	<object-to-string-transformer input-channel="newTicketChannel" output-channel="rawXmppChannel" />
+	
+	<channel id="rawXmppChannel" />
+	
+	<xmpp:header-enricher input-channel="rawXmppChannel" output-channel="enrichedXmppChannel">
+		<xmpp:chat-to value="${gtalk.chatTo}" />
+	</xmpp:header-enricher>	
+	
+	<xmpp:outbound-channel-adapter id="enrichedXmppChannel" xmpp-connection="xmppConnection" />
+	
+	<!-- Note: This bean is not itself the xmppConnection bean. It creates the xmppConnection bean. So we're not
+	     assigning an ID here. -->
+	<beans:bean class="com.springinpractice.ch15.helpdesk.integration.GtalkConnection"
+		p:username="${gtalk.username}"
+		p:password="${gtalk.password}" />
 	
 </beans:beans>
