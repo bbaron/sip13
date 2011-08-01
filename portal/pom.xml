@@ -25,7 +25,11 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<artifactId>com.springinpractice.15_04.portal</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
+	
 	<name>Portal</name>
+	<description>
+		Recipe 15.3 shows how to use Spring Integration to support tickets created by an external web application.
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
