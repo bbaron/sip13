@@ -27,6 +27,9 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<packaging>war</packaging>
 	
 	<name>Help Desk</name>
+	<description>
+		Recipe 15.5 adds Basecamp integration via Spring Integration's support for outbound RESTful web service calls.
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
@@ -51,6 +54,12 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<artifactId>com.springinpractice.deps-web</artifactId>
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>com.springinpractice.skin</artifactId>
+			<version>1.0-RELEASE</version>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
