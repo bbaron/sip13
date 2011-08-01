@@ -7,7 +7,7 @@
 	<!-- Spring in Practice informational metadata -->
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>15.2</param-value>
+		<param-value>15.3</param-value>
 	</context-param>
 	<context-param>
 		<param-name>appName</param-name>
@@ -16,7 +16,7 @@
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>In recipe 15.2 we add confirmation e-mails to the ticketing system using Spring Integration.</p>
+<p>Recipe 15.3 shows how to use Spring Integration to support tickets created by an external web application.</p>
 		]]></param-value>
 	</context-param>
 

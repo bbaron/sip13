@@ -28,7 +28,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<name>Help Desk</name>
 	<description>
-		In recipe 15.2 we add confirmation e-mails to the ticketing system using Spring Integration. 
+		Recipe 15.3 shows how to use Spring Integration to support tickets created by an external web application.
 	</description>
 	<url>http://springinpractice.com/</url>
 	
