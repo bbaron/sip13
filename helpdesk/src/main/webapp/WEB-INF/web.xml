@@ -7,7 +7,7 @@
 	<!-- Spring in Practice informational metadata -->
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>15.5</param-value>
+		<param-value>15.6</param-value>
 	</context-param>
 	<context-param>
 		<param-name>appName</param-name>
@@ -16,7 +16,9 @@
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>Recipe 15.5 adds Basecamp integration via Spring Integration's support for outbound RESTful web service calls.</p>
+<p>Recipe 15.6 shows how to send ticket notifications to an instant messaging client (here, GTalk) over XMPP using
+Spring Integration.</p>
+	</description>
 		]]></param-value>
 	</context-param>
 
