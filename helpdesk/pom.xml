@@ -27,6 +27,10 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<packaging>war</packaging>
 	
 	<name>Help Desk</name>
+	<description>
+		Recipe 15.1 shows how to create a basic, integration-ready help desk application that uses Spring Integration to
+		create new tickets.
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
@@ -51,6 +55,12 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<artifactId>com.springinpractice.deps-web</artifactId>
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>com.springinpractice.skin</artifactId>
+			<version>1.0-RELEASE</version>
+			<type>war</type>
 		</dependency>
 		
 		<!-- Use these since Spring Integration 2.0 isn't in the EBR at the time of this writing. -->

@@ -3,7 +3,25 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
+	<!-- Spring in Practice informational metadata -->
+	<context-param>
+		<param-name>recipe</param-name>
+		<param-value>7.5</param-value>
+	</context-param>
+	<context-param>
+		<param-name>appName</param-name>
+		<param-value>Help Desk</param-value>
+	</context-param>
+	<context-param>
+		<param-name>aboutThisRecipe</param-name>
+		<param-value><![CDATA[
+<p>Recipe 15.1 shows how to create a basic, integration-ready help desk application that uses Spring Integration to
+create new tickets.</p>
+		]]></param-value>
+	</context-param>
 
+	<!-- Configuration -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -11,6 +29,7 @@
 			classpath:/spring/beans-integration.xml
 		</param-value>
 	</context-param>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
