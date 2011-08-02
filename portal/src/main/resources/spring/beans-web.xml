@@ -10,8 +10,8 @@
 	
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-	<mvc:view-controller path="/home.html" />
 	<mvc:view-controller path="/" view-name="redirect:/home.html" />
+	<mvc:view-controller path="/home.html" view-name="extras/home" />
 	
 	<context:component-scan base-package="com.springinpractice.ch15.portal.web" />
 	
