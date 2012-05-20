@@ -21,9 +21,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<groupId>com.springinpractice</groupId>
 	<artifactId>com.springinpractice.15_03.portal</artifactId>
-	<version>1.0-RELEASE</version>
 	<packaging>war</packaging>
 	
 	<name>Portal</name>
