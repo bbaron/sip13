@@ -21,7 +21,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.15_02.helpdesk</artifactId>
+	<artifactId>com.springinpractice.15_03.helpdesk</artifactId>
 	<packaging>war</packaging>
 	
 	<name>Help Desk</name>
