@@ -4,7 +4,7 @@
 ========================================================================================================================
 pom.xml
 
-Copyright (c) 2008-2011 Manning Publications Co.
+Copyright (c) 2008-2012 Manning Publications Co.
 
 Willie Wheeler (willie.wheeler@gmail.com)
 ========================================================================================================================
@@ -21,19 +21,22 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<groupId>com.springinpractice</groupId>
-	<artifactId>com.springinpractice.15_02</artifactId>
-	<version>1.0-RELEASE</version>
+	<artifactId>com.springinpractice.13_02</artifactId>
 	<packaging>pom</packaging>
-	<name>Spring in Practice Recipe 15.2</name>
+	
+	<name>Spring in Practice Recipe 13.2</name>
+	<description>
+		In recipe 13.2 we add confirmation e-mails to the ticketing system using Spring Integration. 
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
-		<chapter.number>15</chapter.number>
+		<chapter.number>13</chapter.number>
 		<chapter.conf.dir>${sip.conf.dir}/sip${chapter.number}</chapter.conf.dir>
 	</properties>
 	
 	<modules>
 		<module>helpdesk</module>
+		<module>portal</module>
 	</modules>
 </project>

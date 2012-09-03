@@ -1,4 +1,4 @@
-package com.springinpractice.ch15.helpdesk.web;
+package com.springinpractice.ch13.helpdesk.web;
 
 import java.util.Date;
 
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.springinpractice.ch15.helpdesk.dao.TicketDao;
-import com.springinpractice.ch15.helpdesk.integration.TicketGateway;
-import com.springinpractice.ch15.helpdesk.model.Ticket;
+import com.springinpractice.ch13.helpdesk.dao.TicketDao;
+import com.springinpractice.ch13.helpdesk.integration.TicketGateway;
+import com.springinpractice.ch13.helpdesk.model.Ticket;
 
 /**
  * Web controller for help desk tickets.
@@ -29,11 +29,7 @@ import com.springinpractice.ch15.helpdesk.model.Ticket;
 @Controller
 @RequestMapping("/tickets")
 public class TicketController {
-	private static final String VN_TICKET_LIST = "tickets/ticketList";
-	private static final String VN_NEW_TICKET_FORM = "tickets/newTicketForm";
-	private static final String VN_NEW_TICKET_CREATED = "redirect:/tickets/ticketcreated.html";
-	private static final String VN_NEW_TICKET_SUCCESS = "tickets/newTicketSuccess";
-	private static final Logger LOG = LoggerFactory.getLogger(TicketController.class);
+	private static final Logger log = LoggerFactory.getLogger(TicketController.class);
 	
 	@Inject private TicketDao ticketDao;
 	@Inject private TicketGateway ticketGateway;
@@ -54,8 +50,8 @@ public class TicketController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getTicketList(Model model) {
-		model.addAttribute(ticketDao.getAll());
-		return VN_TICKET_LIST;
+		model.addAttribute(ticketDao.findAll());
+		return "tickets/ticketList";
 	}
 	
 	/**
@@ -67,7 +63,7 @@ public class TicketController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String getNewTicketForm(Model model) {
 		model.addAttribute(new Ticket());
-		return VN_NEW_TICKET_FORM;
+		return "tickets/newTicketForm";
 	}
 	
 	/**
@@ -79,11 +75,15 @@ public class TicketController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String createTicket(@ModelAttribute @Valid Ticket ticket, BindingResult result) {
-		LOG.debug("Creating ticket: {}", ticket);
-		if (result.hasErrors()) { return VN_NEW_TICKET_FORM; }
+		log.debug("Creating ticket: {}", ticket);
+		
+		if (result.hasErrors()) {
+			return "tickets/newTicketForm";
+		}
+		
 		ticket.setDateCreated(new Date());
 		ticketGateway.createTicket(ticket);
-		return VN_NEW_TICKET_CREATED;
+		return "redirect:/tickets/ticketcreated.html";
 	}
 	
 	/**
@@ -93,6 +93,6 @@ public class TicketController {
 	 */
 	@RequestMapping(value = "/ticketcreated", method = RequestMethod.GET)
 	public String getSuccessPage() {
-		return VN_NEW_TICKET_SUCCESS;
+		return "tickets/newTicketSuccess";
 	}
 }

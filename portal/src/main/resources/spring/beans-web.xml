@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-========================================================================================================================
-beans-web.xml
-
-Copyright (c) 2008-2012 Manning Publications Co.
-
-Willie Wheeler (willie.wheeler@gmail.com)
-========================================================================================================================
--->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -20,14 +10,15 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/mvc
-		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		">
 	
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<mvc:view-controller path="/" view-name="redirect:/home.html" />
 	<mvc:view-controller path="/home.html" view-name="extras/home" />
 	
-	<context:component-scan base-package="com.springinpractice.ch13.helpdesk.web" />
+	<context:component-scan base-package="com.springinpractice.ch13.portal.web" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/"

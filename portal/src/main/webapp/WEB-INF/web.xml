@@ -11,12 +11,13 @@
 	</context-param>
 	<context-param>
 		<param-name>appName</param-name>
-		<param-value>Help Desk</param-value>
+		<param-value>Portal</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>In recipe 13.2 we add confirmation e-mails to the ticketing system using Spring Integration.</p>
+<p>Recipe 13.2 shows how to create a basic, integration-ready help desk application that uses Spring Integration to
+create new tickets.</p>
 		]]></param-value>
 	</context-param>
 
@@ -25,7 +26,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:/spring/beans-service.xml
-			classpath:/spring/beans-integration.xml
 		</param-value>
 	</context-param>
 	
@@ -45,9 +45,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				classpath:/spring/beans-web.xml
-			</param-value>
+			<param-value>classpath:/spring/beans-web.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
