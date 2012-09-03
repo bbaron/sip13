@@ -4,9 +4,14 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.Email;
 
+@XmlRootElement(name = "ticket")
+@XmlAccessorType(value = XmlAccessType.PROPERTY)
 public class PortalTicket {
 	private String userName;
 	private String userEmail;
