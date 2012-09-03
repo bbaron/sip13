@@ -51,7 +51,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<transformer input-channel="newTicketChannel" output-channel="confirmationMailChannel">
 		<beans:bean id="ticketToConfirmationMailTransformer"
-			class="com.springinpractice.ch15.helpdesk.integration.TicketToMailTransformer"
+			class="com.springinpractice.ch13.helpdesk.integration.TicketToMailTransformer"
 			p:confirmationFrom="${confirmation.from}"
 			p:confirmationSubject="${confirmation.subject}" />
 	</transformer>
