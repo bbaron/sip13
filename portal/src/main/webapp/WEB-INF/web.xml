@@ -7,16 +7,16 @@
 	<!-- Spring in Practice informational metadata -->
 	<context-param>
 		<param-name>recipe</param-name>
-		<param-value>15.3</param-value>
+		<param-value>13.3</param-value>
 	</context-param>
 	<context-param>
 		<param-name>appName</param-name>
-		<param-value>SiP University</param-value>
+		<param-value>Portal</param-value>
 	</context-param>
 	<context-param>
 		<param-name>aboutThisRecipe</param-name>
 		<param-value><![CDATA[
-<p>Recipe 15.3 shows how to use Spring Integration to support tickets created by an external web application.</p>
+<p>Recipe 13.3 shows how to use Spring Integration to support tickets created by an external web application.</p>
 		]]></param-value>
 	</context-param>
 

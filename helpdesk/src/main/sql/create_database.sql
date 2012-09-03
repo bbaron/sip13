@@ -1,5 +1,5 @@
-create database sip15_help_desk;
-use sip15_help_desk;
+create database sip13_help_desk;
+use sip13_help_desk;
 
 create table ticket (
     id mediumint(8) unsigned not null auto_increment primary key,

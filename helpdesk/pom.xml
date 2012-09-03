@@ -4,7 +4,7 @@
 ========================================================================================================================
 pom.xml
 
-Copyright (c) 2008-2011 Manning Publications Co.
+Copyright (c) 2008-2012 Manning Publications Co.
 
 Willie Wheeler (willie.wheeler@gmail.com)
 ========================================================================================================================
@@ -17,17 +17,14 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	
 	<parent>
 		<groupId>com.springinpractice</groupId>
-		<artifactId>com.springinpractice.15_03</artifactId>
+		<artifactId>com.springinpractice.13_03</artifactId>
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<artifactId>com.springinpractice.15_03.helpdesk</artifactId>
+	<artifactId>com.springinpractice.13_03.helpdesk</artifactId>
 	<packaging>war</packaging>
 	
 	<name>Help Desk</name>
-	<description>
-		Recipe 15.3 shows how to use Spring Integration to support tickets created by an external web application.
-	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
@@ -37,13 +34,7 @@ Willie Wheeler (willie.wheeler@gmail.com)
 	<dependencies>
 		<dependency>
 			<groupId>com.springinpractice</groupId>
-			<artifactId>com.springinpractice.api</artifactId>
-			<version>1.0-RELEASE</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>com.springinpractice</groupId>
-			<artifactId>com.springinpractice.deps-hibernate</artifactId>
+			<artifactId>com.springinpractice.deps-jpa</artifactId>
 			<version>1.0-RELEASE</version>
 			<type>pom</type>
 		</dependency>
@@ -59,13 +50,15 @@ Willie Wheeler (willie.wheeler@gmail.com)
 			<version>1.0-RELEASE</version>
 			<type>war</type>
 		</dependency>
+		
+		<!-- Java -->
 		<dependency>
 			<groupId>javax.mail</groupId>
-			<artifactId>com.springsource.javax.mail</artifactId>
-			<scope>provided</scope>
+			<artifactId>mail</artifactId>
+<!-- 			<scope>provided</scope> -->
 		</dependency>
 		
-		<!-- Use these since Spring Integration 2.0 isn't in the EBR at the time of this writing. -->
+		<!-- Spring Integration -->
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-core</artifactId>
@@ -122,13 +115,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 						</connector>
 					</connectors>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>javax.mail</groupId>
-						<artifactId>com.springsource.javax.mail</artifactId>
-						<version>${javamail.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,8 +1,8 @@
-package com.springinpractice.ch15.helpdesk.integration;
+package com.springinpractice.ch13.helpdesk.integration;
 
 import org.springframework.integration.annotation.Gateway;
 
-import com.springinpractice.ch15.helpdesk.model.Ticket;
+import com.springinpractice.ch13.helpdesk.model.Ticket;
 
 /**
  * Ticket gateway to support integration between the help desk app and the message bus.

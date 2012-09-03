@@ -1,6 +1,6 @@
-package com.springinpractice.ch15.helpdesk.service;
+package com.springinpractice.ch13.helpdesk.service;
 
-import com.springinpractice.ch15.helpdesk.model.Ticket;
+import com.springinpractice.ch13.helpdesk.model.Ticket;
 
 /**
  * Ticket service interface.

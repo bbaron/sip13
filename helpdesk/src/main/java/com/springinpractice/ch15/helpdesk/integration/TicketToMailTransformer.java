@@ -8,7 +8,7 @@ import org.springframework.integration.annotation.Transformer;
 import org.springframework.mail.MailMessage;
 import org.springframework.mail.SimpleMailMessage;
 
-import com.springinpractice.ch15.helpdesk.model.Ticket;
+import com.springinpractice.ch13.helpdesk.model.Ticket;
 
 /**
  * Maps the ticket to a confirmation e-mail.
