@@ -1,4 +1,4 @@
-package com.springinpractice.ch15.helpdesk.integration;
+package com.springinpractice.ch13.helpdesk.integration;
 
 import java.util.Date;
 
