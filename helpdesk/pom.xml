@@ -105,13 +105,6 @@ Willie Wheeler (willie.wheeler@gmail.com)
 						</connector>
 					</connectors>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>javax.mail</groupId>
-						<artifactId>mail</artifactId>
-						<version>${javamail.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
