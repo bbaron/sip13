@@ -4,7 +4,7 @@
 ========================================================================================================================
 pom.xml
 
-Copyright (c) 2008-2011 Manning Publications Co.
+Copyright (c) 2008-2012 Manning Publications Co.
 
 Willie Wheeler (willie.wheeler@gmail.com)
 ========================================================================================================================
@@ -21,20 +21,23 @@ Willie Wheeler (willie.wheeler@gmail.com)
 		<version>1.0-RELEASE</version>
 	</parent>
 	
-	<groupId>com.springinpractice</groupId>
-	<artifactId>com.springinpractice.15_01</artifactId>
-	<version>1.0-RELEASE</version>
+	<artifactId>com.springinpractice.13_01</artifactId>
 	<packaging>pom</packaging>
 	
-	<name>Spring in Practice Recipe 15.1</name>
+	<name>Spring in Practice Recipe 13.1</name>
+	<description>
+		Recipe 13.1 shows how to create a basic, integration-ready help desk application that uses Spring Integration to
+		create new tickets.
+	</description>
 	<url>http://springinpractice.com/</url>
 	
 	<properties>
-		<chapter.number>15</chapter.number>
+		<chapter.number>13</chapter.number>
 		<chapter.conf.dir>${sip.conf.dir}/sip${chapter.number}</chapter.conf.dir>
 	</properties>
 	
 	<modules>
 		<module>helpdesk</module>
+		<module>portal</module>
 	</modules>
 </project>
